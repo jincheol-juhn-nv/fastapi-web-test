@@ -10,6 +10,12 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
     MASTER_EMAIL: str
     MASTER_PASSWORD: str
+    DB_HOST: str
+    DB_USER: str
+    DB_PASSWORD: str
+    DB_NAME: str
+
+
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:

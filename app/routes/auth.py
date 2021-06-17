@@ -5,6 +5,7 @@ import json
 from pydantic import BaseModel
 from app.auth.auth_handler import token_response, signJWT, decodeJWT
 
+
 class Item(BaseModel):
     email: str
     password: str
@@ -13,6 +14,8 @@ class Token(BaseModel):
     token: str
 
 router = APIRouter()
+
+
 
 
 @router.post('/')
@@ -50,9 +53,9 @@ async def master_login(item: Item, response: Response):
 @router.post('/decode')
 # async def decode_access_token(item: Token):
 async def decode_access_token():
-    # print('hello')
     print('this is item: ', item)
     token = item.token
     print('this is token: ', token)
     decoded = decodeJWT(token)
     return decoded
+
